@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, Subject, tap, throwError } from 'rxjs';
+import { catchError, Observable, Subject, throwError } from 'rxjs';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 
@@ -32,8 +32,9 @@ export class AuthService {
     return false;
   }
 
-  catchError(error:HttpErrorResponse): Observable<string>{
-    const {message} = error.error.error;
+  errorHandler(error:HttpErrorResponse){
+    const {message} = error.error;
+    console.log(message)
     switch(message) {
       case 'Incorrect username or password':
         this.error$.next('Incorrect username or password')
@@ -44,4 +45,5 @@ export class AuthService {
     }
     return throwError(error);
   }
+
 }
