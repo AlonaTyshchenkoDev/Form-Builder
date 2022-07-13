@@ -1,0 +1,123 @@
+<div class="input-box">
+  <mat-accordion class="panel">
+    <mat-expansion-panel (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Form Styles
+        </mat-panel-title>
+        <mat-panel-description>
+          {{panelOpenState ? 'close' : 'open'}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <form class="form_card" [formGroup]="generalFormStyles" (ngSubmit)="submitFormStyles()">
+        <mat-form-field appearance="fill" class="form_title-small">
+          <mat-label>Form Label</mat-label>
+          <input matInput placeholder="Form Label" formControlName="formTitle">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Text Color</mat-label>
+          <input matInput placeholder="Text Color" formControlName="color" #textColor
+                 (click)="changeElemType(textColor)"
+          >
+          <p matSuffix>RGB</p>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Background</mat-label>
+          <input matInput placeholder="Background" formControlName="background" #background
+                 (click)="changeElemType(background)">
+          <p matSuffix>RGB</p>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Border type</mat-label>
+          <mat-select formControlName="borderStyle">
+            <mat-option *ngFor="let type of borderTypes" value="{{type}}">{{type}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Border Color</mat-label>
+          <input matInput placeholder="Border Color" formControlName="borderColor" #borderColor
+                 (click)="changeElemType(borderColor)">
+          <p matSuffix>RGB</p>
+        </mat-form-field>
+
+        <button class="btn btn-center" type="submit">Apply</button>
+      </form>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <mat-accordion>
+    <mat-expansion-panel (opened)="panelFieldOpenState = true"
+                         (closed)="panelFieldOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Form styles
+        </mat-panel-title>
+        <mat-panel-description>
+          {{panelFieldOpenState ? 'close' : 'open'}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <form class="form_card" [formGroup]="fieldStyles" (ngSubmit)="submitFieldStyles()">
+
+        <mat-form-field appearance="fill">
+          <mat-label>Input Label</mat-label>
+          <input matInput placeholder="Input Label" formControlName="title">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Input Placeholder</mat-label>
+          <input matInput placeholder="Input placeholder" formControlName="placeholder">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Width</mat-label>
+          <input type="number" matInput placeholder="Width" formControlName="width">
+          <p matSuffix>px</p>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Height</mat-label>
+          <input type="number" matInput placeholder="Height" formControlName="height">
+          <p matSuffix>px</p>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Font size</mat-label>
+          <input type="number" matInput placeholder="Font size" formControlName="fontSize">
+          <p matSuffix>px</p>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Font weight</mat-label>
+          <mat-select formControlName="fontWeight">
+            <mat-option *ngFor="let weight of fontWeightTypes" value="{{weight}}">{{weight}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Color input</mat-label>
+          <input matInput placeholder="Color input" formControlName="color" #colorInput
+                 (click)="changeElemType(colorInput)"
+          >
+          <p matSuffix>RGB</p>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Border style</mat-label>
+          <mat-select formControlName="borderStyle">
+            <mat-option *ngFor="let type of borderTypes" value="{{type}}">{{type}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-checkbox class="form_checkbox">Required field</mat-checkbox>
+        <button class="btn" type="submit">Apply</button>
+        <button class="btn">Delete</button>
+      </form>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
+

@@ -1,0 +1,11 @@
+  <div class="input-box">
+
+    <div
+      cdkDropList
+      [cdkDropListData]="items"
+      class="example-list"
+      cdkDropListSortingDisabled
+      (cdkDropListDropped)="drop($event)">
+      <div class="custom" *ngFor="let item of items" cdkDrag>{{item.name}}</div>
+    </div>
+  </div>

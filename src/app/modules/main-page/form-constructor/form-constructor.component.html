@@ -1,0 +1,74 @@
+<div class="form_label">
+  <form class="form_box" *ngrxLet="generalStyles$;let formStyles" [style]="formStyles">
+    <p class="form_title"
+    >{{formStyles['formTitle']}}</p>
+    <div
+      cdkDropList
+      *ngrxLet="fields$;let fieldStyles"
+      [cdkDropListData]="items"
+      class="example-list"
+      [class.empty]="!items.length"
+      (cdkDropListDropped)="drop($event)">
+      <div class="box-item" *ngFor="let item of items;index as itemIdx" cdkDragLockAxis="y" cdkDrag>
+        <div class="form_field"
+             *ngIf="item.name === EComponent.Input"
+             [class.active]="itemIdx === selectedItem"
+             (click)="changeSelectedItem(itemIdx)"
+        >
+
+          <input class="custom render"
+                 [style]="fieldStyles[$any(item.id)]"
+                 [placeholder]="fieldStyles[$any(item.id)].placeholder">
+        </div>
+
+        <div class="form_field"
+             *ngIf="item.name ===EComponent.Textarea"
+             [class.active]="itemIdx === selectedItem"
+             (click)="changeSelectedItem(itemIdx)"
+        >
+          <textarea class="custom" rows="1"
+                    [style]="fieldStyles[$any(item.id)]"
+                    [placeholder]="fieldStyles[$any(item.id)].placeholder"
+          ></textarea>
+        </div>
+
+        <div class="form_field"
+             [class.active]="itemIdx === selectedItem"
+             (click)="changeSelectedItem(itemIdx)"
+             *ngIf="item.name === EComponent.Button"
+        >
+          <button class="btn"
+                  [style]="fieldStyles[$any(item.id)]"
+          >{{fieldStyles[$any(item.id)].title}}
+          </button>
+        </div>
+
+        <div class="form_field"
+             [class.active]="itemIdx === selectedItem"
+             (click)="changeSelectedItem(itemIdx)"
+             *ngIf="item.name === EComponent.Checkbox">
+          <mat-checkbox class="form_field"
+                        [style]="fieldStyles[$any(item.id)]"
+
+          >{{fieldStyles[$any(item.id)].title}}
+          </mat-checkbox>
+        </div>
+
+        <div class="form_field"
+             *ngIf="item.name == EComponent.Select"
+             [class.active]="itemIdx === selectedItem"
+             (click)="changeSelectedItem(itemIdx)">
+          <select class="custom render" [style]="fieldStyles[$any(item.id)]">
+            <option value="one">First option</option>
+            <option value="two">Second option</option>
+          </select>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-center"
+              *ngIf="items.length"
+      >Save Form
+      </button>
+    </div>
+  </form>
+
+</div>

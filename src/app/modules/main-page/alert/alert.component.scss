@@ -1,0 +1,30 @@
+.alert-wrap {
+  position: fixed;
+  top: 50px;
+  right: 40px;
+  max-width: 200px;
+  border-radius: 5px;
+}
+
+.alert {
+  padding: 10px;
+  margin: 10px;
+  opacity: 0.9;
+  color: #333;
+  border-style: groove;
+  border-radius: 5px;
+
+  p {
+    font-size: 14px;
+    margin: 0 !important;
+  }
+}
+
+.alert-success {
+  background: #8AFF8A
+}
+
+.alert-warning {
+  background: coral;
+}
+

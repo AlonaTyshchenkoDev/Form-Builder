@@ -1,0 +1,95 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other form-items in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$FormBuilder-primary: mat.define-palette(mat.$indigo-palette);
+$FormBuilder-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$FormBuilder-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$FormBuilder-theme: mat.define-light-theme((
+  color: (
+    primary: $FormBuilder-primary,
+    accent: $FormBuilder-accent,
+    warn: $FormBuilder-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($FormBuilder-theme);
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  height: 100%;
+  margin: 0;
+  font-weight: 400;
+  font-size: 24px;
+  color: #172933;
+}
+
+html {
+  height: 100%;
+}
+
+.input-group {
+  color: #172933;
+  border: 1px solid #C2D6E1;
+}
+
+.main {
+  display: flex;
+  justify-content: space-around;
+  max-width: 80%;
+  margin: 0 auto;
+  padding-top: 21px;
+}
+
+.btn {
+  background-color: #EEF2F4;
+  padding: 10px 20px;
+  color: #172933;
+  border: none;
+  border-radius: 4px;
+  transition: opacity 0.2s ease-in;
+  cursor: pointer;
+}
+
+.btn-center {
+  margin: 10px auto;
+  display: block;
+}
+
+.custom {
+  width: 330px;
+  height: 50px;
+  padding: 15px;
+  border: 1px solid #C2D6E1;
+  border-radius: 4px;
+  color: #172933;
+  box-shadow: 0 2px 1px -1px rgb(0 0 0 / 20%), 0 1px 1px 0px rgb(0 0 0 / 14%), 0 1px 3px 0 rgb(0 0 0 / 12%);
+}
+
+.active {
+  background: rgba(194, 214, 225, 0.5);
+}
+

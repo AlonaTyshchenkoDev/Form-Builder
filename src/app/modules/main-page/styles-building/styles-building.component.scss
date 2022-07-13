@@ -1,0 +1,25 @@
+.btn-center {
+  position: relative;
+  left: 50%;
+}
+
+.mat-expansion-panel-header {
+  border: 1px solid #C2D6E1;
+}
+
+.form_card {
+  max-width: 90%;
+  display: grid;
+  grid-template-columns: repeat(2, 150px);
+  column-gap: 10px;
+
+  .form_title-small {
+    grid-area: 1 / 1 / 2 / 3;
+    justify-self: stretch;
+  }
+
+  .form_checkbox {
+    grid-area: 5 / 1 / 6 / 3;
+    padding-bottom: 10px;
+  }
+}
