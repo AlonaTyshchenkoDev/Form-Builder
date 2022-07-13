@@ -1,36 +1,47 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, tap, throwError } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
-import { ApiService } from './api.service';
+import { ApiUrl } from './consants';
+import { IUser } from '../../main-page/styles-building/interfaces';
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
-  private _isLoggedIn$ = new BehaviorSubject<boolean>(false);
-  private readonly TOKEN_NAME = 'test_auth';
-  isLoggedIn$ = this._isLoggedIn$.asObservable();
 
-  get token(): any {
-    return localStorage.getItem(this.TOKEN_NAME);
+  public error$: Subject<string> = new Subject<string>();
+
+  constructor(
+    private http: HttpClient,
+    private router: Router
+  ) {
   }
 
-  constructor(private apiService: ApiService) {
-    this._isLoggedIn$.next(!!this.token);
+  login(user: IUser): Observable<{email:string, accessToken: string, id: number}>{
+    return this.http.post<{email:string, accessToken: string, id: number}>(ApiUrl, user);
   }
 
-  logIn(username: string, password: string): Observable<any> {
-    return this.apiService.login(username, password).pipe(
-      tap((response: any) => {
-        this._isLoggedIn$.next(true);
-        localStorage.setItem(this.TOKEN_NAME, response.token);
-      })
-    );
+  logOut(): void{
+    localStorage.clear();
+    this.router.navigate(['/login']).then();
   }
 
-  logOut(): void {
-    this._isLoggedIn$.next(!this.token);
+  isAuthenticated(): boolean{
+    if(localStorage.getItem('auth')) return true;
+
+    return false;
   }
 
-  isAuthenticated(): boolean {
-    return !!this.token
+  catchError(error:HttpErrorResponse): Observable<string>{
+    const {message} = error.error.error;
+    switch(message) {
+      case 'Incorrect username or password':
+        this.error$.next('Incorrect username or password')
+        break;
+      case 'Unauthorized':
+        this.error$.next('There are no such users')
+        break;
+    }
+    return throwError(error);
   }
 }

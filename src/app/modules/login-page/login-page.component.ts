@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from './helpers/auth.service';
 import { Router } from '@angular/router';
+import { IUser } from '../main-page/styles-building/interfaces';
+import { catchError, Subject } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login-page',
@@ -10,11 +13,11 @@ import { Router } from '@angular/router';
 })
 export class LoginPageComponent {
 
+  public hide = true;
   public loginForm: FormGroup = this.formBuilder.group({
-    email: ['', [Validators.required, Validators.email]],
+    username: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required]
   });
-  public hide = true;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -23,14 +26,15 @@ export class LoginPageComponent {
   ) {
   }
 
-  submitForm(): void {
+  submitForm(): void{
     if (this.loginForm.invalid) return;
+    const user: IUser = this.loginForm.value;
 
-    const value = this.loginForm.value;
-    this.authService.logIn(value.email, value.password)
+    this.authService.login(user)
       .subscribe(
         (res) => {
-          console.log('User is Log In', res);
+          localStorage.setItem('auth', res.accessToken);
+          localStorage.setItem('username', res.email);
           this.router.navigate(['/']).then(r => console.log(r));
         }
       )

@@ -8,8 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
 
 import { LoginPageComponent } from './login-page.component';
-import { FakeBackendProvider } from './helpers/fakeBackEnd.interceptor';
-import { AuthInterceptorProvider } from './helpers/auth.interceptor';
+// import { AuthInterceptorProvider } from './helpers/auth.interceptor';
 
 @NgModule({
   declarations: [LoginPageComponent],
@@ -25,7 +24,7 @@ import { AuthInterceptorProvider } from './helpers/auth.interceptor';
     HttpClientModule
   ],
   exports: [RouterModule],
-  providers: [FakeBackendProvider, AuthInterceptorProvider]
+  providers: []
 })
 export class LoginModule {
 }
