@@ -38,7 +38,7 @@ export class AuthService {
       case 'Incorrect username or password':
         this.error$.next('Incorrect username or password')
         break;
-      case 'Error in authorization format':
+      case 'Unauthorized':
         this.error$.next('There are no such users')
         break;
     }

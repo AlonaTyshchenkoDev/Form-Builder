@@ -4,6 +4,7 @@ import { AuthService } from './helpers/auth.service';
 import { Router } from '@angular/router';
 import { IUser } from '../main-page/styles-building/interfaces';
 import { catchError, Subject } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login-page',
