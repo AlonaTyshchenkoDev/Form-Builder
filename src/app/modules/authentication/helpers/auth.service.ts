@@ -15,17 +15,21 @@ export class AuthService {
   ) {
   }
 
-  login(user: IUser): Observable<{email:string, accessToken: string, id: number}>{
-    return this.http.post<{email:string, accessToken: string, id: number}>(ApiUrlLogin, user);
+  login(user: IUser): Observable<{accessToken: string,user: {email:string, id:string, login: string}}>{
+    return this.http.post<{accessToken: string,user: {email:string, id:string, login: string}}>(ApiUrlLogin, user);
   }
 
-  register(user: IUser): Observable<{email:string, accessToken: string, id: number}>{
-    return this.http.post<{email:string, accessToken: string, id: number}>(ApiUrlRegister, user);
+  register(user: IUser): Observable<{accessToken: string,user: {email:string, id:string, login: string}}>{
+    return this.http.post<{accessToken: string,user: {email:string, id:string, login: string}}>(ApiUrlRegister, user);
   }
 
   logOut(): void{
     localStorage.clear();
     this.router.navigate(['/login']).then();
+  }
+
+  registerIn(): void{
+    this.router.navigate(['/login/register']).then();
   }
 
   isAuthenticated(): boolean{

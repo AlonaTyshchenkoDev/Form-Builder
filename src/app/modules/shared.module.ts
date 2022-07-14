@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AlertComponent } from './main-page/alert/alert.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
@@ -10,9 +9,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveComponentModule } from '@ngrx/component';
 
+import { AlertComponent } from './main-page/alert/alert.component';
+import { HeaderComponent } from '../shared/header/header.component';
+
 @NgModule({
   declarations: [
-    AlertComponent
+    AlertComponent,
+    HeaderComponent
   ],
   imports: [
     CommonModule,
@@ -37,7 +40,8 @@ import { ReactiveComponentModule } from '@ngrx/component';
     FormsModule,
     ReactiveFormsModule,
     ReactiveComponentModule,
-    AlertComponent
+    AlertComponent,
+    HeaderComponent
   ]
 })
 export class SharedModule { }

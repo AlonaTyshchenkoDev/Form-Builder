@@ -1,11 +1,12 @@
 <router-outlet></router-outlet>
+<app-header></app-header>
 <app-alert></app-alert>
 <div class="container">
   <h1>Registration new user </h1>
   <form class="login_form" (submit)="submitForm()" [formGroup]="registerForm">
     <mat-form-field class="example-full-width">
-      <mat-label>Enter your Username</mat-label>
-      <input type="email" name="email" matInput placeholder="username" formControlName="username">
+      <mat-label>Enter your Login</mat-label>
+      <input type="text" name="login" matInput placeholder="login" formControlName="login">
       <mat-hint>Errors appear instantly!</mat-hint>
       <mat-error *ngIf="registerForm.get('email')?.touched"
       >Please enter a valid username

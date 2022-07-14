@@ -10,13 +10,11 @@ import { MainModule } from './modules/main-page/main.module';
 import { LoginModule } from './modules/authentication/login.module';
 import { metaReducers, reducers } from './reducers';
 import { environment } from '../environments/environment';
-import { HeaderComponent } from './shared/header/header.component';
 import { SharedModule } from './modules/shared.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HeaderComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,

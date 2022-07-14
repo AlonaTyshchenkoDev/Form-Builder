@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../helpers/auth.service';
 import { IUser } from '../../main-page/styles-building/interfaces';
 import { AlertService } from '../../../services/alert.service';
+import { ItemsService } from '../../../services/items.service';
 
 @Component({
   selector: 'app-register-page',
@@ -13,10 +14,9 @@ import { AlertService } from '../../../services/alert.service';
 })
 export class RegisterPageComponent{
 
-  public test : string = 'test'
   public hide = true;
   public registerForm: FormGroup = this.formBuilder.group({
-    username: ['', Validators.required],
+    login: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(6)]]
   });
@@ -32,8 +32,7 @@ export class RegisterPageComponent{
   submitForm(): void{
     if (this.registerForm.invalid) return;
     const newUser: IUser = this.registerForm.value;
-    this.alert.success(`New user ${newUser.username} is registered!`)
-
+    this.alert.success(`New user ${newUser.login} is registered!`)
     this.authService.register(newUser)
       .subscribe(
         {
