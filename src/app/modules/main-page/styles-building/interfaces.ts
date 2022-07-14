@@ -25,7 +25,7 @@ export interface IFieldStyles {
 }
 
 export interface IUser {
-  username: string,
+  username?: string,
+  email: string,
   password: string,
-  token?: string
 }

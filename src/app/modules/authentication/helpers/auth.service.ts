@@ -3,13 +3,11 @@ import { catchError, Observable, Subject, throwError } from 'rxjs';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 
-import { ApiUrl } from './consants';
+import { ApiUrlLogin, ApiUrlRegister } from './consants';
 import { IUser } from '../../main-page/styles-building/interfaces';
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
-
-  public error$: Subject<string> = new Subject<string>();
 
   constructor(
     private http: HttpClient,
@@ -18,7 +16,11 @@ export class AuthService {
   }
 
   login(user: IUser): Observable<{email:string, accessToken: string, id: number}>{
-    return this.http.post<{email:string, accessToken: string, id: number}>(ApiUrl, user);
+    return this.http.post<{email:string, accessToken: string, id: number}>(ApiUrlLogin, user);
+  }
+
+  register(user: IUser): Observable<{email:string, accessToken: string, id: number}>{
+    return this.http.post<{email:string, accessToken: string, id: number}>(ApiUrlRegister, user);
   }
 
   logOut(): void{
@@ -31,19 +33,4 @@ export class AuthService {
 
     return false;
   }
-
-  errorHandler(error:HttpErrorResponse){
-    const {message} = error.error;
-    console.log(message)
-    switch(message) {
-      case 'Incorrect username or password':
-        this.error$.next('Incorrect username or password')
-        break;
-      case 'Unauthorized':
-        this.error$.next('There are no such users')
-        break;
-    }
-    return throwError(error);
-  }
-
 }

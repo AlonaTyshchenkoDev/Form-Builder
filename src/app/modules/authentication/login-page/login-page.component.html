@@ -1,10 +1,11 @@
 <router-outlet></router-outlet>
+<app-alert></app-alert>
 <div class="container">
   <h1>Log In System</h1>
   <form class="login_form" (submit)="submitForm()" [formGroup]="loginForm">
     <mat-form-field class="example-full-width">
       <mat-label>Enter your Email</mat-label>
-      <input type="email" name="email" matInput placeholder="user@gmail.com" formControlName="username">
+      <input type="email" name="email" matInput placeholder="user@gmail.com" formControlName="email">
       <mat-hint>Errors appear instantly!</mat-hint>
       <mat-error *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid "
       >Please enter a valid email address
