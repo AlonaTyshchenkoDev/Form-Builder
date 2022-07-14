@@ -13,6 +13,7 @@ import { AlertService } from '../../../services/alert.service';
 })
 export class RegisterPageComponent{
 
+  public test : string = 'test'
   public hide = true;
   public registerForm: FormGroup = this.formBuilder.group({
     username: ['', Validators.required],
