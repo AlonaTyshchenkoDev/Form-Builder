@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { LoginPageComponent } from './login-page/login-page.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
 import { SharedModule } from '../shared.module';
+import { AuthRoutingModule } from './auth-routing.module';
 
 @NgModule({
   declarations: [LoginPageComponent, RegisterPageComponent],
@@ -15,13 +15,8 @@ import { SharedModule } from '../shared.module';
     SharedModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule.forChild([
-      {path: '', component: LoginPageComponent},
-      {path: 'register', component: RegisterPageComponent}
-    ])
-  ],
-  exports: [RouterModule],
-  providers: []
+    AuthRoutingModule
+  ]
 })
 export class LoginModule {
 }
