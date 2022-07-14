@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { catchError, Observable, Subject, throwError } from 'rxjs';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 import { ApiUrlLogin, ApiUrlRegister } from './consants';
@@ -26,10 +26,6 @@ export class AuthService {
   logOut(): void{
     localStorage.clear();
     this.router.navigate(['/login']).then();
-  }
-
-  registerIn(): void{
-    this.router.navigate(['/login/register']).then();
   }
 
   isAuthenticated(): boolean{

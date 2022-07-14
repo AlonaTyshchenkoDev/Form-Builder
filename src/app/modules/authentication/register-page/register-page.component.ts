@@ -14,7 +14,8 @@ import { ItemsService } from '../../../services/items.service';
 })
 export class RegisterPageComponent{
 
-  public hide = true;
+  public message: string;
+  public hide: boolean = true;
   public registerForm: FormGroup = this.formBuilder.group({
     login: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
@@ -32,7 +33,6 @@ export class RegisterPageComponent{
   submitForm(): void{
     if (this.registerForm.invalid) return;
     const newUser: IUser = this.registerForm.value;
-    this.alert.success(`New user ${newUser.login} is registered!`)
     this.authService.register(newUser)
       .subscribe(
         {
@@ -40,8 +40,8 @@ export class RegisterPageComponent{
             this.router.navigate(['/login']).then();
           },
           error: error => {
-            const err = error.error
-            console.log(err)
+              this.message = error['error'];
+              this.alert.warning(this.message);
           }
         }
       )
