@@ -30,7 +30,6 @@ export class AuthService {
 
   isAuthenticated(): boolean{
     if(localStorage.getItem('auth')) return true;
-
     return false;
   }
 }

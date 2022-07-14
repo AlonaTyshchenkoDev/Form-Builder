@@ -25,7 +25,7 @@ export class HeaderComponent {
     this.itemService.userName$.next(null);
   }
 
-  register() {
+  register(): void{
     this.router.navigate(['/login/register']).then();
   }
 }

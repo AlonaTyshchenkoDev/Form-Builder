@@ -31,7 +31,6 @@ export class RegisterPageComponent{
 
   submitForm(): void{
     if (this.registerForm.invalid) return;
-
     const newUser: IUser = this.registerForm.value;
     this.authService.register(newUser)
       .subscribe(
