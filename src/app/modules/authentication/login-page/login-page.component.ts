@@ -6,6 +6,7 @@ import { AuthService } from '../helpers/auth.service';
 import { IUser } from '../../main-page/interfaces';
 import { ItemsService } from '../../../services/items.service';
 import { AlertService } from '../../../services/alert.service';
+import { EActionLogin } from '../helpers/consants';
 
 @Component({
   selector: 'app-login-page',
@@ -41,6 +42,7 @@ export class LoginPageComponent{
             localStorage.setItem('auth', res.accessToken);
             localStorage.setItem('login', res.user.login);
             this.itemService.userName$.next(localStorage.getItem('login'));
+            this.itemService.userAction$.next(EActionLogin.LogOut);
             this.router.navigate(['/']).then();
           },
           error: error => {
