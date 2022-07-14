@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 import { ApiUrlLogin, ApiUrlRegister } from './consants';
-import { IUser } from '../../main-page/styles-building/interfaces';
+import { IUser } from '../../main-page/interfaces';
 
 @Injectable({providedIn: 'root'})
 export class AuthService {

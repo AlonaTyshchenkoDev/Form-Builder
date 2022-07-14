@@ -3,9 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { AuthService } from '../helpers/auth.service';
-import { IUser } from '../../main-page/styles-building/interfaces';
+import { IUser } from '../../main-page/interfaces';
 import { AlertService } from '../../../services/alert.service';
-import { ItemsService } from '../../../services/items.service';
 
 @Component({
   selector: 'app-register-page',
@@ -32,6 +31,7 @@ export class RegisterPageComponent{
 
   submitForm(): void{
     if (this.registerForm.invalid) return;
+
     const newUser: IUser = this.registerForm.value;
     this.authService.register(newUser)
       .subscribe(

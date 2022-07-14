@@ -7,7 +7,7 @@ import {
   CSelectDefaultStyles,
   CTextAreaDefaultStyles
 } from './defaultFieldStyles';
-import { IFieldStyles } from '../../modules/main-page/styles-building/interfaces';
+import { IFieldStyles } from '../../modules/main-page/interfaces';
 
 export function setNewFieldStylesFunction(field: string): IFieldStyles {
   switch (field) {

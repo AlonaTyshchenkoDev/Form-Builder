@@ -12,13 +12,13 @@ import { SharedModule } from '../shared.module';
   declarations: [LoginPageComponent, RegisterPageComponent],
   imports: [
     CommonModule,
-    RouterModule.forChild([
-      {path: '', component: LoginPageComponent},
-      {path: 'register', component: RegisterPageComponent}
-    ]),
     SharedModule,
     ReactiveFormsModule,
     HttpClientModule,
+    RouterModule.forChild([
+      {path: '', component: LoginPageComponent},
+      {path: 'register', component: RegisterPageComponent}
+    ])
   ],
   exports: [RouterModule],
   providers: []

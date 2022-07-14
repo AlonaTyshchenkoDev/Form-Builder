@@ -3,12 +3,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { AuthService } from '../helpers/auth.service';
-import { IUser } from '../../main-page/styles-building/interfaces';
+import { IUser } from '../../main-page/interfaces';
 import { ItemsService } from '../../../services/items.service';
 import { AlertService } from '../../../services/alert.service';
 
 @Component({
-  selector: 'app-authentication',
+  selector: 'app-login-page',
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.scss']
 })
@@ -30,10 +30,10 @@ export class LoginPageComponent{
   ) {
   }
 
-  submitForm(): void {
+  submitForm(): void{
     if (this.loginForm.invalid) return;
-    const user: IUser = this.loginForm.value;
 
+    const user: IUser = this.loginForm.value;
     this.authService.login(user)
       .subscribe(
         {
