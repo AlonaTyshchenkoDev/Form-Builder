@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 
 import { AuthService } from '../helpers/auth.service';
 import { IUser } from '../../main-page/styles-building/interfaces';
+import { ItemsService } from '../../../services/items.service';
 
 @Component({
   selector: 'app-authentication',
@@ -21,7 +22,8 @@ export class LoginPageComponent{
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private itemService: ItemsService
   ) {
   }
 
@@ -34,6 +36,9 @@ export class LoginPageComponent{
         {
           next: (res) => {
             localStorage.setItem('auth', res.accessToken);
+            localStorage.setItem('login', res.user.login);
+            this.itemService.userName$.next(localStorage.getItem('login'));
+            console.log(this.itemService.userName$.getValue())
             this.router.navigate(['/']).then(r => console.log(r));
           },
           error: error => {

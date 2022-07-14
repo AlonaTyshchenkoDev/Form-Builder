@@ -1,6 +1,8 @@
 import { Component} from '@angular/core';
+import { Router } from '@angular/router';
 
 import { AuthService } from '../../modules/authentication/helpers/auth.service';
+import { ItemsService } from '../../services/items.service';
 
 @Component({
   selector: 'app-header',
@@ -8,12 +10,22 @@ import { AuthService } from '../../modules/authentication/helpers/auth.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  public userName: string | null = localStorage.getItem('username');
 
+  public userName: string | null = this.itemService.userName$.getValue();
 
-  constructor(private authService: AuthService) { }
+  constructor(
+    private authService: AuthService,
+    private itemService: ItemsService,
+    private router: Router
+  ) {
+  }
 
-  logOut() {
+  logOut(): void{
     this.authService.logOut();
+    this.itemService.userName$.next(null);
+  }
+
+  register() {
+    this.router.navigate(['/login/register']).then();
   }
 }

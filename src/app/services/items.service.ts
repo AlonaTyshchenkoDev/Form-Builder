@@ -6,4 +6,5 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class ItemsService {
   public activeItemIdx$: BehaviorSubject<string | null> = new BehaviorSubject<string | null>(null);
+  public userName$: BehaviorSubject<string | null> = new BehaviorSubject<string | null>(null);
 }
