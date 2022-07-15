@@ -5,7 +5,7 @@
 .form_box {
 
   width: 400px;
-  border: 1px solid #C2D6E1;
+  border: 1px solid rgba(194, 214, 225, 0.5);
   border-width: thin;
   border-radius: 4px;
 
@@ -23,11 +23,9 @@
   }
 
   .form_box {
-    border: 1px solid #C2D6E1;
+    border: 1px solid var(--light-color);
     border-radius: 4px;
-    box-shadow: 0 2px 1px -1px rgb(0 0 0 / 20%), 0 1px 1px 0 rgb(0 0 0 / 14%),
-    0 1px 3px 0px rgb(0 0 0 / 12%);
-
+    box-shadow: var(--box-shadow)
 
     button {
       display: block;
