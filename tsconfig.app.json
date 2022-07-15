@@ -8,7 +8,7 @@
   "files": [
     "src/main.ts",
     "src/polyfills.ts",
-    "src/app/modules/main-page/styles-building/interfaces.ts"
+    "src/app/modules/main-page/interfaces.ts"
   ],
   "include": [
     "src/**/*.d.ts"

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AuthGuard } from './modules/login-page/helpers/auth.guard';
+import { AuthGuard } from './modules/authentication/helpers/auth.guard';
 
 const routes: Routes = [
   {
@@ -16,7 +16,7 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () =>
-      import('./modules/login-page/login.module').then(
+      import('./modules/authentication/login.module').then(
         (m) => m.LoginModule
       )
   },

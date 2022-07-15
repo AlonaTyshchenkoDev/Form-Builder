@@ -8,18 +8,16 @@ export interface Alert {
   text: string
 }
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({providedIn: 'root'})
 
 export class AlertService {
   public alert$ = new Subject<Alert>()
 
   success(text: string) {
-    this.alert$.next({type: 'success', text})
+    this.alert$.next({type: 'success', text});
   }
 
   warning(text: string) {
-    this.alert$.next({type: 'warning', text})
+    this.alert$.next({type: 'warning', text});
   }
 }

@@ -18,7 +18,7 @@ export class AlertComponent implements OnInit {
   constructor(private alertService: AlertService) {
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void{
     this.aSub = this.alertService.alert$.subscribe(alert => {
       this.text = alert.text;
       this.type = alert.type;
@@ -30,7 +30,7 @@ export class AlertComponent implements OnInit {
     });
   }
 
-  ngOnDestroy(): void {
+  ngOnDestroy(): void{
     if (this.aSub) this.aSub.unsubscribe();
   }
 }

@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { CdkDragDrop, copyArrayItem, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Observable } from 'rxjs';
-
-import { IDropItem } from '../styles-building/interfaces';
-import { EComponent } from '../form-items/enums';
 import { select, Store } from '@ngrx/store';
+
+import { IDropItem } from '../interfaces';
+import { EComponent } from '../form-items/enums';
 import { selectFormStyles } from '../../../reducers/formStyles/form-styles.select';
 import { PushNewFieldAction } from '../../../reducers/formFields/formFields.action';
 import { selectFormField } from '../../../reducers/formFields/formFields.select';

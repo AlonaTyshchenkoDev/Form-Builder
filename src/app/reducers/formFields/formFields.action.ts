@@ -1,7 +1,7 @@
 import { Action } from '@ngrx/store';
 
 import { IFormFieldPayload } from '../interfaces';
-import { IFieldStyles } from '../../modules/main-page/styles-building/interfaces';
+import { IFieldStyles } from '../../modules/main-page/interfaces';
 
 export enum EFormFieldChanges {
   pushNewField = '[FORM FIELD] pushNewField',

@@ -5,7 +5,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { selectFormStyles } from '../../../reducers/formStyles/form-styles.select';
 import { SetFormStylesAction } from '../../../reducers/formStyles/form-styles.actions';
-import { IGeneralStyles } from './interfaces';
+import { IGeneralStyles } from '../interfaces';
 import { IState } from '../../../reducers';
 import { ItemsService } from '../../../services/items.service';
 import { UpdateFieldStylesAction } from '../../../reducers/formFields/formFields.action';

@@ -1,8 +1,8 @@
 import { CdkDragDrop, copyArrayItem, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component } from '@angular/core';
-import { IDropItem } from '../styles-building/interfaces';
+
+import { IDropItem } from '../interfaces';
 import { EComponent } from './enums';
-import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-form-items',
@@ -18,11 +18,6 @@ export class FormItemsComponent {
     {name: EComponent.Select},
     {name: EComponent.Textarea}
   ];
-
-  constructor(
-    public store$: Store
-  ) {
-  }
 
   drop(event: CdkDragDrop<IDropItem[]>) {
     if (event.previousContainer === event.container) {

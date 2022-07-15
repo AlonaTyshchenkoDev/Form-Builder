@@ -1,9 +1,11 @@
 <header>
-  <p class="auth" *ngIf="userName; else stranger">Hi {{userName}}!</p>
-  <ng-template #stranger>Hi, stranger!</ng-template>
+  <p class="auth">Hi {{userName}}!</p>
   <p class="title">Form Builder</p>
-  <button (click)="logOut()" type="submit" *ngIf="userName;else logo">Log Out  &#8594;</button>
-  <ng-template #logo>Log In system</ng-template>
+  <div class="login" [ngSwitch]="userAction">
+    <button (click)="logOut()" type="submit" *ngSwitchCase="EActionLogin.LogOut">{{userAction}} &#8594;</button>
+    <button (click)="logIn()" type="submit" *ngSwitchCase="EActionLogin.LogIn">{{userAction}}</button>
+    <button (click)="register()" type="submit" *ngSwitchDefault>{{userAction}}</button>
+  </div>
 </header>
 <hr>
 
